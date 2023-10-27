@@ -1,0 +1,71 @@
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-5-mt">
+        <div class="card-body card bg-dark text-center">
+          <form action="/add" method="POST">
+            <div class="mb-2 row">
+  
+              <div class="col-12 col-sm-6 mt-3 mb-3">
+                <input
+                  type="number"
+                  name="boleta"
+                  placeholder="Boleta"
+                  class="form-control"
+                  maxlength="10"
+                  required
+                  minlength="1"
+                  autofocus
+                />
+              </div>
+              <div class="col-12 col-sm-6 mt-3 mb-3">
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre"
+                  class="form-control"
+                  maxlength="50"
+                  required
+                  minlength="1"
+                />
+              </div>
+              <div class="col-12 col-sm-6 mt-3 mb-3">
+                <input
+                  type="text"
+                  name="appaterno"
+                  placeholder="Apellido Paterno"
+                  class="form-control"
+                  maxlength="50"
+                  required
+                  minlength="1"
+                />
+              </div>
+              <div class="col-12 col-sm-6 mt-3 mb-3">
+                <input
+                  type="text"
+                  name="apmaterno"
+                  placeholder="Apellido Materno"
+                  class="form-control"
+                  maxlength="50"
+                  required
+                  minlength="1"
+                />
+              </div>
+              <div class="col-12 col-sm-6 mt-3 mb-3">
+                <input
+                  type="number"
+                  name="telefono"
+                  placeholder="Teléfono"
+                  class="form-control"
+                  maxlength="10"
+                  required
+                  minlength="1"
+                />
+              </div>
+  
+            </div>
+            <button type="submit" class="btn btn-info">Guardar alumno</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>

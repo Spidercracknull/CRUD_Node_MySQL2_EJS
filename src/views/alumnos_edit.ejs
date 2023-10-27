@@ -1,0 +1,79 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <h2 class="mt-3 mb-3">Editar datos</h2>
+
+        <form action="/update/<%= alumno.boleta %>" method="POST">
+          <input
+            type="number"
+            name="boleta"
+            value="<%= alumno.boleta %>"
+            class="form-control mb-3"
+            maxlength="10"
+            required
+            minlength="1"
+            autofocus
+            pattern="\d{10}"
+            title="La boleta debe ser un número de 10 dígitos"
+          />
+          <input
+            type="text"
+            name="nombre"
+            value="<%= alumno.nombre %>"
+            placeholder="Nombre"
+            class="form-control mb-3"
+            maxlength="50"
+            required
+            minlength="1"
+            pattern="[A-Za-z\s]+"
+            title="El nombre debe contener solo letras y espacios"
+          />
+          <input
+            type="text"
+            name="appaterno"
+            value="<%= alumno.appaterno %>"
+            placeholder="Apellido Paterno"
+            class="form-control mb-3"
+            maxlength="50"
+            required
+            minlength="1"
+            pattern="[A-Za-z\s]+" 
+            title="El Apellido Paterno debe contener solo letras y espacios"
+          />
+          <input
+            type="text"
+            name="apmaterno"
+            value="<%= alumno.apmaterno %>"
+            placeholder="Apellido Materno"
+            class="form-control mb-3"
+            maxlength="50"
+            required
+            minlength="1"
+            pattern="[A-Za-z\s]+" 
+            title="El Apellido Materno debe contener solo letras y espacios"
+          />
+          <input
+            type="text"
+            name="telefono"
+            value="<%= alumno.telefono %>"
+            placeholder="Teléfono"
+            class="form-control mb-3"
+            maxlength="10"
+            required
+            minlength="1"
+            pattern="\d{10}" 
+            title="El teléfono debe ser un número de 10 dígitos"
+          />
+        
+          <button type="submit" class="btn btn-primary">Guardar alumno</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

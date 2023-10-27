@@ -1,0 +1,160 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5 mb-5 text-center">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-dark table-bordered table-hover center">
+        <thead>
+          <tr>
+            <td>Boleta</td>
+            <td>Nombre</td>
+            <td>Apellido Paterno</td>
+            <td>Apellido Materno</td>
+            <td>Teléfono</td>
+            <td>Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (alumnos) { %> <% for(var i = 0; i < alumnos.length; i++) { %>
+          <tr>
+            <td><%= alumnos[i].boleta %></td>
+            <td><%= alumnos[i].nombre %></td>
+            <td><%= alumnos[i].appaterno %></td>
+            <td><%= alumnos[i].apmaterno %></td>
+            <td><%= alumnos[i].telefono %></td>
+            <td class="d-flex gap-2">
+              <a href="/update/<%= alumnos[i].boleta %>" class="btn btn-info">
+                Editar
+              </a>
+              <a href="/delete/<%= alumnos[i].boleta %>" class="btn btn-danger">
+                Borrar
+              </a>
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-5-mt center form">
+      <div class="card-body card bg-dark text-center d-flex align-items-center">
+        <form id="alumnosForm" action="/add" method="POST">
+          <div class="mb-2 row">
+            <div class="col-12 col-sm-6 mt-3 mb-3">
+              <input
+                type="number"
+                name="boleta"
+                placeholder="Boleta"
+                class="form-control"
+                maxlength="10"
+                required
+                minlength="1"
+                min="0"
+                autofocus
+              />
+            </div>
+            <div class="col-12 col-sm-6 mt-3 mb-3">
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre"
+                class="form-control"
+                maxlength="50"
+                required
+                minlength="1"
+              />
+            </div>
+            <div class="col-12 col-sm-6 mt-3 mb-3">
+              <input
+                type="text"
+                name="appaterno"
+                placeholder="Apellido Paterno"
+                class="form-control"
+                maxlength="50"
+                required
+                minlength="1"
+              />
+            </div>
+            <div class="col-12 col-sm-6 mt-3 mb-3">
+              <input
+                type="text"
+                name="apmaterno"
+                placeholder="Apellido Materno"
+                class="form-control"
+                maxlength="50"
+                required
+                minlength="1"
+              />
+            </div>
+            <div class="col-12 col-sm-6 mt-3 mb-3">
+              <input
+                type="number"
+                name="telefono"
+                placeholder="Teléfono"
+                class="form-control"
+                maxlength="10"
+                required
+                minlength="1"
+                min="0"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info" onclick="btnVal()">Guardar alumno</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document
+    .getElementById("alumnosForm")
+    .addEventListener("submit", function (event) {
+      var boleta = document.getElementsByName("boleta")[0].value;
+      var nombre = document.getElementsByName("nombre")[0].value;
+      var appaterno = document.getElementsByName("appaterno")[0].value;
+      var apmaterno = document.getElementsByName("apmaterno")[0].value;
+      var telefono = document.getElementsByName("telefono")[0].value;
+
+      var boletaPattern = /^\d{10}$/;
+      var nombrePattern = /^[A-Za-z\s]+$/;
+      var apellidoPattern = /^[A-Za-z\s]+$/;
+      var telefonoPattern = /^\d{10}$/;
+
+      if (!boleta.match(boletaPattern)) {
+        alert("Boleta debe ser un número de 10 dígitos.");
+        event.preventDefault();
+      }
+      if (!nombre.match(nombrePattern)) {
+        alert("Nombre debe contener solo letras y espacios.");
+        event.preventDefault();
+      }
+      if (!appaterno.match(apellidoPattern)) {
+        alert("Apellido Paterno debe contener solo letras y espacios.");
+        event.preventDefault();
+      }
+      if (!apmaterno.match(apellidoPattern)) {
+        alert("Apellido Materno debe contener solo letras y espacios.");
+        event.preventDefault();
+      }
+      if (!telefono.match(telefonoPattern)) {
+        alert("Teléfono debe ser un número de 10 dígitos.");
+        event.preventDefault();
+      }
+
+      // Si todas las validaciones pasan y el formulario se envía con éxito, muestra un mensaje de confirmación
+
+      function btnVal() {
+        if (
+          !boleta.match(boletaPattern) &&
+          !nombre.match(nombrePattern) &&
+          !appaterno.match(apellidoPattern) &&
+          !apmaterno.match(apellidoPattern) &&
+          !telefono.match(telefonoPattern)
+        ) {
+          alert("Usuario guardado con éxito.");
+        }
+      }
+    });
+</script>
+
+<%- include("partials/_footer") %>
